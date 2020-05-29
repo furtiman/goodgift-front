@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect, BrowserRouter, Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Main } from 'pages/Main';
 
 const Container = styled.div`  
   display: flex;
@@ -30,6 +31,8 @@ function App() {
         <Route path="/test" render={Test} />
         <Redirect to="/" />
       </Switch>
+
+      <Main />
 
     </BrowserRouter>
   );
