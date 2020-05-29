@@ -1,0 +1,16 @@
+node_modules
+node_modules/
+
+build
+build/
+
+.git
+.git/
+
+.github
+.github/
+
+.vscode
+.vscode/
+
+.gitignore
