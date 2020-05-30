@@ -1,7 +1,6 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
 
-const Second = styled.button`
+const Container = styled.button`
     margin-top: 15px;
     padding: 15px 20px;
 
@@ -40,43 +39,4 @@ const Second = styled.button`
     }
 `;
 
-const First = styled.button`
-    padding: 25px 7px 26px 8px;
-
-    ${ props => props.margin && css`
-        margin-left: 6px;
-    ` }
-
-    border: none;
-    outline: none;
-    cursor: pointer;
-
-    font-style: normal;
-    font-weight: normal;
-    font-size: 24px;
-    line-height: 29px;
-
-    background-color: transparent;
-
-    &:hover {
-        background-color: var(--black);
-        color: var(--white);
-    }
-
-    transition: all .2s;
-`;
-
-export const Button = props => {
-
-    const {variant, buttonProps, type, children} = props;
-
-    return (
-        <>
-            {
-                type === "first" 
-                    ? <First variant={variant} {...buttonProps} children={children} />
-                    : <Second variant={variant} {...buttonProps} children={children} />
-            }
-        </>
-    );
-};
+export const Button = Container;
