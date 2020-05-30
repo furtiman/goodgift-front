@@ -3,6 +3,7 @@ import { Switch, Route, Redirect, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Home } from 'pages/Home';
 import { Ad } from 'pages/Ad';
+import { Create } from 'pages/Create';
 
 const Container = styled.div`  
   display: flex;
@@ -26,7 +27,9 @@ function App() {
       <Switch>
         <Route path="/" component={Home} exact />
         <Route path="/ad/:id" render={Ad} />
-        <Redirect to="/create" />
+        <Route path="/create" render={Create} />
+        
+        <Redirect to="/" />
       </Switch>
     </>
   );
