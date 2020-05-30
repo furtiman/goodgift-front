@@ -1,11 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { Brand } from 'components/Brand';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Container } from 'components/Container';
 import { StoreContext } from 'store/reducer';
 import { Balance } from "components/Balance";
 import { Link } from 'react-router-dom';
 import { PopUp } from 'components/PopUp';
+import { Button } from "components/Button";
+import { Input } from "components/Input";
 
 const Background = styled.div`
     background-color: var(--green);
@@ -14,32 +16,6 @@ const Background = styled.div`
 const Wrap = styled.div`
     display: flex;
     justify-content: space-between;
-`;
-
-const Button = styled.button`
-    padding: 25px 7px 26px 8px;
-
-    ${ props => props.margin && css`
-        margin-left: 6px;
-    ` }
-
-    border: none;
-    outline: none;
-    cursor: pointer;
-
-    font-style: normal;
-    font-weight: normal;
-    font-size: 24px;
-    line-height: 29px;
-
-    background-color: transparent;
-
-    &:hover {
-        background-color: var(--black);
-        color: var(--white);
-    }
-
-    transition: all .2s;
 `;
 
 const UserWrap = styled.div`
@@ -66,48 +42,11 @@ const User = styled(Link)`
         color: var(--white);
     }
 `;
-const Input = styled.input`
-    max-width: 450px;
-
-    font-size: 24px;
-    font-weight: bold;
-    line-height: 29px;
-    color: #4C4947;
-    background: #CECCCE;
-    border: none;
-    outline: none;
-
-    padding: 15px 20px;
-    margin-bottom: 15px;
-
-    &::placeholder{
-        color: #4C4947;
-    }
-`
-const PopUpButton = styled.button`
-    max-width: 450px;
-
-    font-size: 24px;
-    font-weight: normal;
-    line-height: 29px;
-    color: #EFEDEF;
-    background: #222022;
-    text-align: center;
-    border: none;
-    outline: none;
-    transition: .2s;
-
-    margin-top: 15px;
-    padding: 15px 20px;
-
-    &:hover{
-        background: #6EAD3A;
-    }
-`
 
 export const Navbar = props => {
 
-    const { login, balance, clearUser, setUser } = useContext(StoreContext);
+    // setUser
+    const { login, balance, clearUser } = useContext(StoreContext);
     
     const [showLogin, setShowLogin] = useState(false);
     const [showRegistration, setShowRegistration] = useState(false);
@@ -132,25 +71,63 @@ export const Navbar = props => {
                             ? <UserWrap>
                                 <User to={`/ads/${login}`} >{login}</User>
                                 <Balance value={balance} />
-                                <Button margin onClick={() => clearUser()} >Выйти</Button>
+
+                                <Button 
+                                    buttonProps={{ 
+                                        margin: true,
+                                          onClick: () => clearUser() 
+                                    }}
+                                    type="first"
+                                >
+                                        Выйти
+                                </Button>
                               </UserWrap>
 
                             : <UserWrap>
-                                <Button onClick={handleShowLoginChange}>Войти</Button>
-                                <Button onClick={handleShowRegistrationChange}>
+
+                                <Button
+                                    buttonProps={{
+                                        onClick: handleShowLoginChange,
+                                    }}
+                                    type="first"
+                                >
+                                    Войти
+                                </Button>
+
+                                <Button
+                                    buttonProps={{
+                                        onClick: handleShowRegistrationChange,
+                                    }}
+                                    type="first"
+                                >
                                     Зарегистрироваться
                                 </Button>
+
                               </UserWrap>
                     }
                     <PopUp show={showLogin} backDropHandler={handleShowLoginChange}>
                         <Input type="text" placeholder="Логин"/>
                         <Input type="password" placeholder="Пароль"/>
-                        <PopUpButton>Войти</PopUpButton>
+
+                        <Button
+                            variant="popup"
+                            type="second"
+                        >
+                                Войти
+                        </Button>
+
                     </PopUp>
                     <PopUp show={showRegistration} backDropHandler={handleShowRegistrationChange}>
                         <Input type="text" placeholder="Логин"/>
                         <Input type="password" placeholder="Пароль"/>
-                        <PopUpButton>Зарегистрироваться</PopUpButton>
+
+                        <Button 
+                            variant="popup"
+                            type="second"
+                        >
+                            Зарегистрироваться
+                        </Button>
+
                     </PopUp>
                 </Wrap>
             </Container>
