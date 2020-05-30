@@ -132,7 +132,7 @@ export const Navbar = props => {
                             ? <UserWrap>
                                 <User to={`/ads/${login}`} >{login}</User>
                                 <Balance value={balance} />
-                                <Button margin onClick={() => clearUser()} >Войти</Button>
+                                <Button margin onClick={() => clearUser()} >Выйти</Button>
                               </UserWrap>
 
                             : <UserWrap>
