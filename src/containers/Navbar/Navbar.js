@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react';
+import styled, {css} from 'styled-components';
+
 import { Brand } from 'components/Brand';
-import styled from 'styled-components';
 import { Container } from 'components/Container';
 import { StoreContext } from 'store/reducer';
 import { Balance } from "components/Balance";
 import { Link } from 'react-router-dom';
 import { PopUp } from 'components/PopUp';
-import { Button } from "components/Button";
-import { Input } from "components/Input";
+import { PopUpForm } from 'containers/PopUpForm';
 
 const Background = styled.div`
     background-color: var(--green);
@@ -43,21 +43,46 @@ const User = styled(Link)`
     }
 `;
 
-export const Navbar = props => {
+const NavButton = styled.button`
+    padding: 25px 7px 26px 8px;
 
-    // setUser
+    ${ props => props.margin && css`
+        margin-left: 6px;
+    ` }
+
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 29px;
+
+    background-color: transparent;
+
+    &:hover {
+        background-color: var(--black);
+        color: var(--white);
+    }
+
+    transition: all .2s;
+`;
+
+export const Navbar = props => {
     const { login, balance, clearUser } = useContext(StoreContext);
     
     const [showLogin, setShowLogin] = useState(false);
-    const [showRegistration, setShowRegistration] = useState(false);
+    const [showReg, setShowReg] = useState(false);
 
-    function handleShowLoginChange() {
+    function showLoginHandler() {
         if (showLogin) setShowLogin(false);
         if (!showLogin) setShowLogin(true);
       }
-    function handleShowRegistrationChange() {
-        if (showRegistration) setShowRegistration(false);
-        if (!showRegistration) setShowRegistration(true);
+
+    function showRegHandler() {
+        if (showReg) setShowReg(false);
+        if (!showReg) setShowReg(true);
       }
 
     return (
@@ -72,63 +97,32 @@ export const Navbar = props => {
                                 <User to={`/ads/${login}`} >{login}</User>
                                 <Balance value={balance} />
 
-                                <Button 
-                                    buttonProps={{ 
-                                        margin: true,
-                                          onClick: () => clearUser() 
-                                    }}
-                                    type="first"
-                                >
+                                <NavButton margin onClick={() => clearUser() } >
                                         Выйти
-                                </Button>
+                                </NavButton>
                               </UserWrap>
 
                             : <UserWrap>
 
-                                <Button
-                                    buttonProps={{
-                                        onClick: handleShowLoginChange,
-                                    }}
-                                    type="first"
-                                >
+                                <NavButton onClick={showLoginHandler} >
                                     Войти
-                                </Button>
+                                </NavButton>
 
-                                <Button
-                                    buttonProps={{
-                                        onClick: handleShowRegistrationChange,
-                                    }}
-                                    type="first"
-                                >
+                                <NavButton onClick={showRegHandler} >
                                     Зарегистрироваться
-                                </Button>
+                                </NavButton>
 
                               </UserWrap>
                     }
-                    <PopUp show={showLogin} backDropHandler={handleShowLoginChange}>
-                        <Input type="text" placeholder="Логин"/>
-                        <Input type="password" placeholder="Пароль"/>
 
-                        <Button
-                            variant="popup"
-                            type="second"
-                        >
-                                Войти
-                        </Button>
-
+                    <PopUp show={showLogin} backDropHandler={showLoginHandler}>
+                        <PopUpForm type="login" />
                     </PopUp>
-                    <PopUp show={showRegistration} backDropHandler={handleShowRegistrationChange}>
-                        <Input type="text" placeholder="Логин"/>
-                        <Input type="password" placeholder="Пароль"/>
 
-                        <Button 
-                            variant="popup"
-                            type="second"
-                        >
-                            Зарегистрироваться
-                        </Button>
-
+                    <PopUp show={showReg} backDropHandler={showRegHandler}> 
+                        <PopUpForm type="register" />
                     </PopUp>
+
                 </Wrap>
             </Container>
         </Background>
