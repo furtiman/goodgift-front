@@ -1,7 +1,9 @@
 import React from 'react';
-import { Switch, Route, Redirect, BrowserRouter, Link } from 'react-router-dom';
+import { Switch, Route, Redirect, Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Main } from 'pages/Main';
+import { Home } from 'pages/Home';
+import { Ad } from 'pages/Ad';
+import { Create } from 'pages/Create';
 
 const Container = styled.div`  
   display: flex;
@@ -17,24 +19,19 @@ const Navbar = props => (
   </Container>
 );
 
-const Home = props => (<div>Home</div>);
-const Test = props => (<div>Test</div>);
-
 function App() {
   return (
-    <BrowserRouter>
-
+    <>
       <Navbar />
 
       <Switch>
         <Route path="/" component={Home} exact />
-        <Route path="/test" render={Test} />
+        <Route path="/ad/:id" render={Ad} />
+        <Route path="/create" render={Create} />
+        
         <Redirect to="/" />
       </Switch>
-
-      <Main />
-
-    </BrowserRouter>
+    </>
   );
 }
 
