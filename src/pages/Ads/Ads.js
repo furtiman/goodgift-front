@@ -1,8 +1,11 @@
 import React from 'react';
+import { Page } from 'components/Page';
 
 export const Ads = props => {
 
     return (
-        <div>Ads</div>
+        <Page>
+            Ads
+        </Page>
     );
 };
