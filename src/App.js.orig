@@ -4,11 +4,14 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { Home } from 'pages/Home';
 import { Ad } from 'pages/Ad';
 import { Create } from 'pages/Create';
+<<<<<<< Updated upstream
 import { storeReducer, initState, StoreContext } from 'store/reducer';
-import { SortPanel } from 'containers/SortPanel';
 import { setUserAction, clearUserAction } from 'store/actions';
 import { Navbar } from "containers/Navbar";
 import { Ads } from 'pages/Ads';
+=======
+import { SortPanel } from 'containers/SortPanel';
+>>>>>>> Stashed changes
 
 function App() {
 
