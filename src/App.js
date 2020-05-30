@@ -2,7 +2,6 @@ import React from 'react';
 import { Switch, Route, Redirect, BrowserRouter, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Main } from 'pages/Main';
-import { Avatar } from "@material-ui/core";
 
 const Container = styled.div`  
   display: flex;
@@ -18,9 +17,7 @@ const Navbar = props => (
   </Container>
 );
 
-const Home = props => (
-  <Avatar alt="test" />
-);
+const Home = props => (<div>Home</div>);
 const Test = props => (<div>Test</div>);
 
 function App() {
