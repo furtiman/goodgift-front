@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Brand } from 'components/Brand';
 import styled, { css } from 'styled-components';
 import { Container } from 'components/Container';
 import { StoreContext } from 'store/reducer';
 import { Balance } from "components/Balance";
 import { Link } from 'react-router-dom';
+import { PopUp } from 'components/PopUp';
 
 const Background = styled.div`
     background-color: var(--green);
@@ -69,6 +70,13 @@ const User = styled(Link)`
 export const Navbar = props => {
 
     const { login, balance, clearUser, setUser } = useContext(StoreContext);
+    
+    const [show, setShow] = useState(false);
+
+    function handleStatusChange() {
+        if (show) setShow(false);
+        if (!show) setShow(true);
+      }
 
     return (
         <Background>
@@ -86,9 +94,14 @@ export const Navbar = props => {
 
                             : <UserWrap>
                                 <Button onClick={() => setUser({login: "tatata", password: "graa"})}  >Войти</Button>
-                                <Button>Зарегистрироваться</Button>
+                                <Button onClick={handleStatusChange}>
+                                    Зарегистрироваться
+                                </Button>
                               </UserWrap>
                     }
+                    <PopUp show={show} backDropHandler={handleStatusChange}>
+
+                    </PopUp>
                 </Wrap>
             </Container>
         </Background>
