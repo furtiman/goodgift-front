@@ -18,6 +18,7 @@ function App() {
       token: state ? state.token : initState.token,
       login: state ? state.login : initState.login,
       balance: state ? state.balance : initState.balance,
+      
       setUser: ({ login, password }) => setUserAction(login, password, dispatch),
       clearUser: () => dispatch(clearUserAction()),
     }} >
