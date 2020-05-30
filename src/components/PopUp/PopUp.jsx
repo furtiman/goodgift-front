@@ -2,6 +2,9 @@ import React, { useContext, useState } from "react";
 import styled, { css } from "styled-components";
 
 const Wrap = styled.div`
+    display: flex;
+    flex-direction: column;
+
     position: absolute;
     left: 50%;
     z-index: 10;

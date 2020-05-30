@@ -66,16 +66,59 @@ const User = styled(Link)`
         color: var(--white);
     }
 `;
+const Input = styled.input`
+    max-width: 450px;
+
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 29px;
+    color: #4C4947;
+    background: #CECCCE;
+    border: none;
+    outline: none;
+
+    padding: 15px 20px;
+    margin-bottom: 15px;
+
+    &::placeholder{
+        color: #4C4947;
+    }
+`
+const PopUpButton = styled.button`
+    max-width: 450px;
+
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 29px;
+    color: #EFEDEF;
+    background: #222022;
+    text-align: center;
+    border: none;
+    outline: none;
+    transition: .2s;
+
+    margin-top: 15px;
+    padding: 15px 20px;
+
+    &:hover{
+        background: #6EAD3A;
+    }
+`
 
 export const Navbar = props => {
 
     const { login, balance, clearUser, setUser } = useContext(StoreContext);
     
-    const [show, setShow] = useState(false);
+    const [showLogin, setShowLogin] = useState(false);
+    const [showRegistration, setShowRegistration] = useState(false);
 
-    function handleStatusChange() {
-        if (show) setShow(false);
-        if (!show) setShow(true);
+    function handleShowLoginChange() {
+        if (showLogin) setShowLogin(false);
+        if (!showLogin) setShowLogin(true);
+      }
+    function handleShowRegistrationChange() {
+        if (showRegistration) setShowRegistration(false);
+        if (!showRegistration) setShowRegistration(true);
       }
 
     return (
@@ -89,18 +132,25 @@ export const Navbar = props => {
                             ? <UserWrap>
                                 <User to={`/ads/${login}`} >{login}</User>
                                 <Balance value={balance} />
-                                <Button margin onClick={() => clearUser()} >Выйти</Button>
+                                <Button margin onClick={() => clearUser()} >Войти</Button>
                               </UserWrap>
 
                             : <UserWrap>
-                                <Button onClick={() => setUser({login: "tatata", password: "graa"})}  >Войти</Button>
-                                <Button onClick={handleStatusChange}>
+                                <Button onClick={handleShowLoginChange}>Войти</Button>
+                                <Button onClick={handleShowRegistrationChange}>
                                     Зарегистрироваться
                                 </Button>
                               </UserWrap>
                     }
-                    <PopUp show={show} backDropHandler={handleStatusChange}>
-
+                    <PopUp show={showLogin} backDropHandler={handleShowLoginChange}>
+                        <Input type="text" placeholder="Логин"/>
+                        <Input type="password" placeholder="Пароль"/>
+                        <PopUpButton>Войти</PopUpButton>
+                    </PopUp>
+                    <PopUp show={showRegistration} backDropHandler={handleShowRegistrationChange}>
+                        <Input type="text" placeholder="Логин"/>
+                        <Input type="password" placeholder="Пароль"/>
+                        <PopUpButton>Зарегистрироваться</PopUpButton>
                     </PopUp>
                 </Wrap>
             </Container>
