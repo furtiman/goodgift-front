@@ -14,42 +14,6 @@ const HomeInput = styled(Input)`
     margin-bottom: 20px;
 `
 
-
-const Notes = [
-    { 
-        title: 'Помогу с доставкой 1', 
-        author: 'Муся Щека',
-        price: "100",
-        type: "1",
-        id: '1',
-        text: 'Разнообразный и богатый опыт постоянный количественный рост и сфера нашей активности играет важную роль в формировании существующих финансовых и административных условий. Повседневная практика показывает...'
-    },
-    { 
-        title: 'Мне нужна помощь с доставкой! 2', 
-        author: 'Муся Щека',
-        price: "100",
-        type: "2",
-        id: '2',
-        text: 'Разнообразный и богатый опыт постоянный количественный рост и сфера нашей активности играет важную роль в формировании существующих финансовых и административных условий. Повседневная практика показывает...'
-    },
-    { 
-        title: 'Помогу с доставкой 3', 
-        author: 'Муся Щека',
-        price: "100",
-        type: "1",
-        id: '3',
-        text: 'Разнообразный и богатый опыт постоянный количественный рост и сфера нашей активности играет важную роль в формировании существующих финансовых и административных условий. Повседневная практика показывает...'
-    }, 
-    { 
-        title: 'Мне нужна помощь с доставкой! 4', 
-        author: 'Муся Щека',
-        price: "100",
-        type: "2",
-        id: '4',
-        text: 'Разнообразный и богатый опыт постоянный количественный рост и сфера нашей активности играет важную роль в формировании существующих финансовых и административных условий. Повседневная практика показывает...'
-    },
-  ];
-
 export const Home = props => {
     const [error, setError] = useState(null);
 
@@ -59,16 +23,19 @@ export const Home = props => {
         setError(null);
     };
 
-    const [notes, setNotes] = useState(Notes);
+    const { notes: cNotes } = useContext(StoreContext);
+
+    // removed setNotes
+    const [notes] = useState(cNotes);
 
     const sendHandler = e => {
-        // bug
-        if( value === "" ) return;
+        // // bug
+        // if( value === "" ) return;
         
-        // TODO request to server
-        if( value === "test" ) return setNotes(Notes);
-        console.log(type);
-        setNotes([]);
+        // // TODO request to server
+        // if( value === "test" ) return setNotes(Notes);
+        // console.log(type);
+        // setNotes([]);
     }
 
     // radio
