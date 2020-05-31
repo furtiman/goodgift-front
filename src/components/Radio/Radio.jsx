@@ -37,7 +37,7 @@ export const Radio = props => {
     const id = useId("radio");
     const name = useContext(NameContext);
 
-    const { onChange } = props;
+    const { onChange, checked } = props;
 
     return (
         <>
@@ -46,6 +46,7 @@ export const Radio = props => {
                 id={id}
                 name={name}
                 onChange={onChange}
+                checked={checked}
             />
             <RadioButton htmlFor={id} >{props.children}</RadioButton>
         </>

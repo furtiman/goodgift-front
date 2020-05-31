@@ -14,13 +14,17 @@ function App() {
 
   const [state, dispatch] = useReducer(storeReducer);
 
+  const token = state ? state.token : initState.token;
+  const login = state ? state.login : initState.login;
+  const balance = state ? state.balance : initState.balance;
+
   return (
     <StoreContext.Provider value={{
-      token: state ? state.token : initState.token,
-      login: state ? state.login : initState.login,
-      balance: state ? state.balance : initState.balance,
+      token,
+      login,
+      balance,
       
-      setUser: ({ login, password }) => setUserAction(login, password, dispatch),
+      setUser: ({ login, password }) => setUserAction({login, password}, dispatch),
       clearUser: () => dispatch(clearUserAction()),
     }} >
 
@@ -31,8 +35,9 @@ function App() {
       <Switch>
         <Route path="/" component={Home} exact />
         <Route path="/ad/:id" render={Ad} />
-        <Route path="/create" render={Create} />
         <Route path="/ads/:user" render={Ads} />
+
+        {login && <Route path="/create" render={Create} />}
         
         <Redirect to="/" />
       </Switch>

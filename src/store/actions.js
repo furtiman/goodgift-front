@@ -1,6 +1,6 @@
 import { SET_TOKEN, CLEAR_TOKEN } from "./types";
 
-export const setUserAction = async (password, login, dispatch) => {
+export const setUserAction = async ({login, password}, dispatch) => {
     // TODO request to server
     const token = password + login;
 
