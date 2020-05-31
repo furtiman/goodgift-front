@@ -4,6 +4,8 @@ import { Container } from 'components/Container';
 
 const Background = styled.div`
     min-height: calc(100vh - 80px);
+    
+    position: relative;
 
     background-color: var(--white);
 

@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Balance } from "components/Balance";
+import { Link } from "react-router-dom";
 
-const Wrap = styled.div`
+const Wrap = styled(Link)`
     width: 100%;
     max-height: 125px;
     height: 100%;
@@ -13,9 +14,14 @@ const Wrap = styled.div`
     background: var(--light-gray);
     transition: .3s;
     border-bottom: 9px solid var(--green);
+    text-decoration: none;
 
     padding: 10px 25px;
     margin-bottom: 6px;
+
+    &:last-child{
+        margin-bottom: 80px;
+    }
 `;
 const TopWrap = styled.div`
     width:100%;
@@ -25,9 +31,6 @@ const TopWrap = styled.div`
     align-items: center;
     
 `
-// const Flex = styled.div`
-//     display: flex; 
-// `
 const Title = styled.h2`
     font-weight: bold;
     font-size: 18px;
@@ -36,13 +39,6 @@ const Title = styled.h2`
 
     margin: 0 30px 0 0;
 `;
-// const Hashtag = styled.span`
-//     font-weight: bold;
-//     font-size: 18px;
-//     line-height: 22px;
-
-//     color: var(--white);
-// `;
 const Author = styled.span`
     font-weight: bold;
     font-size: 14px;
@@ -62,7 +58,7 @@ export const Note = (props) => {
     const {title, author, price, text} = props;
 
     return (
-        <Wrap>
+        <Wrap to="/ad/:id">
             <TopWrap>
                 <Title>{title}</Title>
                 <Balance value={price}/>
