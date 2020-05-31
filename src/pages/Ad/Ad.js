@@ -2,12 +2,11 @@ import React from 'react';
 import { Page } from 'components/Page';
 
 export const Ad = props => {
-
-    console.log(props);
+    const {match} = props;
 
     return (
         <Page>
-            Ad:
+            Ad: {match.params.id}
         </Page>
     );
 };
