@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const Wrap = styled(Link)`
-    max-width: 980px;
+    max-width: 970px;
     width: 100%;
     height: 70px;
 

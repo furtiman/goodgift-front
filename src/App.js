@@ -8,7 +8,6 @@ import { storeReducer, initState, StoreContext } from 'store/reducer';
 import { setUserAction, clearUserAction } from 'store/actions';
 import { Navbar } from "containers/Navbar";
 import { Ads } from 'pages/Ads';
-import { Form } from 'components/Form/Form';
 
 function App() {
 
@@ -30,17 +29,16 @@ function App() {
 
       <Navbar />
 
-      <Form />
-
       <Switch>
         <Route path="/" component={Home} exact />
-        <Route path="/ad/:id" render={Ad} />
-        <Route path="/ads/:user" render={Ads} />
+        <Route path="/ad/:id" component={Ad} />
+        <Route path="/ads/:user" component={Ads} />
 
-        {login && <Route path="/create" render={Create} />}
+        {login && <Route path="/create" component={Create} />}
         
         <Redirect to="/" />
       </Switch>
+
     </StoreContext.Provider>
   );
 }

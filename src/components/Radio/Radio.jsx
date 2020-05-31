@@ -25,7 +25,7 @@ const RadioButton = styled.label`
     line-height: 44px;
     transition: .2s;
 
-    padding: 13px 105px;
+    padding: 13px 100px;
 
     &:hover {
         background: var(--green);
