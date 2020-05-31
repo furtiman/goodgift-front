@@ -30,6 +30,7 @@ export const storeReducer = (state = initState, action) => {
             const {token, login, balance} = action;
 
             const user = {token, login, balance};
+            console.log(login);
 
             localStorage.setItem("user", JSON.stringify(user));
 
