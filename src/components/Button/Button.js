@@ -9,6 +9,9 @@ const Container = styled.button`
             font-size: 24px;
             font-weight: normal;
             line-height: 29px;
+
+            display: block;
+            width: 100%;
          `
         : css`
             font-style: normal;
@@ -18,8 +21,6 @@ const Container = styled.button`
             padding: 13px 120px;
         ` 
     }
-
-    ${ props => props.varian === "" }
 
     color: var(--white);
     background: var(--black);

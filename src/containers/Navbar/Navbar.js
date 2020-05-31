@@ -116,11 +116,11 @@ export const Navbar = props => {
                     }
 
                     <PopUp show={showLogin} backDropHandler={showLoginHandler}>
-                        <PopUpForm type="login" />
+                        <PopUpForm type="login" closeHandler={showLoginHandler} />
                     </PopUp>
 
                     <PopUp show={showReg} backDropHandler={showRegHandler}> 
-                        <PopUpForm type="register" />
+                        <PopUpForm type="register" closeHandler={showRegHandler} />
                     </PopUp>
 
                 </Wrap>

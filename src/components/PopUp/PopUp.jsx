@@ -5,7 +5,7 @@ const Wrap = styled.div`
     display: flex;
     flex-direction: column;
 
-    position: absolute;
+    position: fixed;
     left: 50%;
     z-index: 10;
     ${props => props.show 

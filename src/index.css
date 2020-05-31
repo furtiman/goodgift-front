@@ -13,6 +13,8 @@ body {
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  position: relative;
 }
 html {
   box-sizing: border-box;
