@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const Container = styled.input`
     display: block;
 
+    font-family: Montserrat, sans-serif;
     font-size: 24px;
     font-weight: bold;
     line-height: 29px;

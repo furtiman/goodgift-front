@@ -1,23 +1,14 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
 
 import { Page } from 'components/Page';
-import { Form } from 'components/Form';
-import { Input } from 'components/Input';
+import { CreateContainer } from 'containers/CreateContainer';
 
-const CreateInput = styled(Input)`
-    width: 100%;
-    margin-bottom: 20px;
-`
 
 export const Create = props => {
 
     return (
         <Page>
-            <Form>
-                <CreateInput placeholder="Название"/>
-
-            </Form>
+            <CreateContainer />
         </Page>
     );
 };
