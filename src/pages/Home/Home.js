@@ -6,8 +6,7 @@ import { Note } from 'components/Note/';
 import { Input } from 'components/Input';
 import { Form } from 'components/Form';
 import { AddNote } from 'components/AddNote';
-import { Radio } from "components/Radio";
-import { SwitchForm } from "components/SwitchForm";
+import { SwitchForm } from "containers/SwitchForm";
 import { StoreContext } from 'store/reducer';
 
 const HomeInput = styled(Input)`
@@ -97,7 +96,7 @@ export const Home = props => {
                     error && <div>{error}</div>
                 }
 
-                <SwitchForm changeFunc={radioChanger} type={type} />
+                <SwitchForm variant="home" changeFunc={radioChanger} type={type} />
             </Form>
             {
                 filtered.length > 0
