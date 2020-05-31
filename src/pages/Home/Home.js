@@ -7,21 +7,14 @@ import { Input } from 'components/Input';
 import { Form } from 'components/Form';
 import { AddNote } from 'components/AddNote';
 import { Radio } from "components/Radio";
+import { SwitchForm } from "components/SwitchForm";
 import { StoreContext } from 'store/reducer';
 
 const HomeInput = styled(Input)`
     width: 100%;
-    box-sizing: border-box;
     margin-bottom: 20px;
 `
-const RadioWrap = styled.div`
-    width: 100%;
 
-    display: flex;
-    justify-content: space-between;    
-
-    margin-bottom: 15px;
-`
 
 const Notes = [
     { 
@@ -102,14 +95,7 @@ export const Home = props => {
                     error && <div>{error}</div>
                 }
 
-                <RadioWrap>
-                    <Radio onChange={radioChanger("1")} checked={type === "1"} >
-                        Хочу помочь
-                    </Radio>
-                    <Radio onChange={radioChanger("2")} checked={type === "2"}  >
-                        Нужна помощь
-                    </Radio>
-                </RadioWrap>
+                <SwitchForm changeFunc={radioChanger} type={type} />
             </Form>
             {
                 filtered.length > 0
