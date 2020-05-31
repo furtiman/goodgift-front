@@ -31,13 +31,14 @@ function App() {
 
       <Switch>
         <Route path="/" component={Home} exact />
-        <Route path="/ad/:id" render={Ad} />
-        <Route path="/ads/:user" render={Ads} />
+        <Route path="/ad/:id" component={Ad} />
+        <Route path="/ads/:user" component={Ads} />
 
-        {login && <Route path="/create" render={Create} />}
+        {login && <Route path="/create" component={Create} />}
         
         <Redirect to="/" />
       </Switch>
+
     </StoreContext.Provider>
   );
 }
