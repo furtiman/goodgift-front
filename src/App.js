@@ -16,12 +16,14 @@ function App() {
   const token = state ? state.token : initState.token;
   const login = state ? state.login : initState.login;
   const balance = state ? state.balance : initState.balance;
+  const notes = state ? state.notes : initState.notes;
 
   return (
     <StoreContext.Provider value={{
       token,
       login,
       balance,
+      notes,
       
       setUser: ({ login, password }) => setUserAction({login, password}, dispatch),
       clearUser: () => dispatch(clearUserAction()),
