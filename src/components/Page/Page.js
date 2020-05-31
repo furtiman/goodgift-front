@@ -10,6 +10,8 @@ const Background = styled.div`
     background-color: var(--white);
 
     padding-top: 50px;
+
+    padding-bottom: 80px;
 `
 
 export const Page = props => {

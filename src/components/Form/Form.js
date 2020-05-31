@@ -6,7 +6,7 @@ const Container = styled.form`
     
 `;
 
-const NameContext = createContext("");
+export const NameContext = createContext("");
 
 export const Form = props => {
 
