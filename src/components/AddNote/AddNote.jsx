@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Balance } from "components/Balance";
 import { Link } from "react-router-dom";
 
 const Wrap = styled(Link)`
@@ -40,11 +39,4 @@ const Wrap = styled(Link)`
 `;
 
 
-export const AddNote = (props) => {
-
-    const {title, author, price, text} = props;
-
-    return (
-        <Wrap to="/create"></Wrap>
-    );
-};
+export const AddNote = props => (<Wrap to="/create" />);

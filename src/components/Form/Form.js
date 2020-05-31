@@ -10,17 +10,17 @@ export const NameContext = createContext("");
 
 export const Form = props => {
 
-    const {children, submitHandler} = props;
+    const {children, onSubmit} = props;
     const name = useId("form");
 
-    const onSubmit = e => {
+    const submitHandler = e => {
         e.preventDefault();
 
-        if( submitHandler ) submitHandler();
+        if( onSubmit ) onSubmit(e);
     }
 
     return (
-        <Container onSubmit={onSubmit} name={name} >
+        <Container onSubmit={submitHandler} name={name} >
             <NameContext.Provider value={name} >
                 {children}
             </NameContext.Provider>

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { useId } from 'hooks/useId';
+import { NameContext } from 'components/Form';
 
 const RadioInput = styled.input`
     position: absolute;
@@ -32,22 +33,21 @@ const RadioButton = styled.label`
 `
 
 export const Radio = props => {
-    const id = useId('radio');
 
-    const {checked, children, onChange} = props;
+    const id = useId("radio");
+    const name = useContext(NameContext);
+
+    const { onChange } = props;
 
     return (
         <>
-            <Radio 
+            <RadioInput 
                 type="radio"
                 id={id}
-                checked={checked}
+                name={name}
                 onChange={onChange}
-                />
-            <RadioButton htmlFor={id}>
-                {children}
-            </RadioButton>
+            />
+            <RadioButton htmlFor={id} >{props.children}</RadioButton>
         </>
-
     )
 }

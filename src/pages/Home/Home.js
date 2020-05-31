@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { Page } from 'components/Page';
@@ -6,8 +6,7 @@ import { Note } from 'components/Note/';
 import { Input } from 'components/Input';
 import { Form } from 'components/Form';
 import { AddNote } from 'components/AddNote';
-import { NameContext } from 'components/Form';
-import { Radio } from 'components/Radio/Radio';
+import { Radio } from "components/Radio";
 
 const HomeInput = styled(Input)`
     width: 100%;
@@ -31,36 +30,69 @@ const Notes = [
   ];
 
 export const Home = props => {
+    const [type, setType] = useState("0");
+    const radioChanger = text => e => setType(text);
 
-    const name = useContext(NameContext);
+    const [error, setError] = useState(null);
 
-    const changeHandler = text => (e) => console.log(text);
+    const [value, setValue] = useState("");
+    const changeHandler = e => {
+        setValue(e.target.value);
+        setError(null);
+    };
+
+    const [notes, setNotes] = useState(Notes);
+
+    const sendHandler = e => {
+        // bug
+        if( value === "" ) return;
+        
+        // TODO request to server
+        if( value === "test" ) return setNotes(Notes);
+        console.log(type);
+        setNotes([]);
+    }
 
     return (
         <Page>
-            <Form onChange={(e) => console.log(e.target)}>
-                <HomeInput type="text" placeholder="Поиск..." />
+            <Form onSubmit={sendHandler} >
+                <HomeInput 
+                    type="search" 
+                    minLength="3"
+                    placeholder="Поиск..."
+                    value={value}
+                    onChange={changeHandler}
+                />
+                
+                {
+                    error && <div>{error}</div>
+                }
+
                 <RadioWrap>
-                    <Radio onChange={changeHandler('1')}>
+                    <Radio onChange={radioChanger("1")} >
                         Хочу помочь
                     </Radio>
-                    <Radio onChange={changeHandler('2')}>
+                    <Radio onChange={radioChanger("2")} >
                         Нужна помощь
                     </Radio>
                 </RadioWrap>
             </Form>
-            {Notes.map((note) => {  
-                return (
-                    <Note
-                        title={note.title}
-                        author={note.author}
-                        price={note.price}
-                        text={note.text}
-                        key={note.id}
-                        id={note.id}
-                    />
-                );
-            })}
+            {
+                notes.length > 0
+                    ? notes.map((note) => {  
+                        return (
+                            <Note
+                                title={note.title}
+                                author={note.author}
+                                price={note.price}
+                                text={note.text}
+                                key={note.id}
+                                id={note.id}
+                            />
+                        );
+                        })
+                    : <div>Nothing found</div>
+            }
             <AddNote />
         </Page>
         

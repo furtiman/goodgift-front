@@ -55,10 +55,10 @@ const Text = styled.span`
 
 export const Note = (props) => {
 
-    const {title, author, price, text} = props;
+    const {title, author, price, text, id} = props;
 
     return (
-        <Wrap to="/ad/:id">
+        <Wrap to={`/ad/${id}`} >
             <TopWrap>
                 <Title>{title}</Title>
                 <Balance value={price}/>
