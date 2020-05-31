@@ -4,15 +4,6 @@ import styled from 'styled-components';
 import { Radio } from "components/Radio";
 import { Form } from 'components/Form';
 
-const RadioForm = styled(Form)`
-    width: 100%;
-
-    display: flex;
-    justify-content: space-between;    
-
-    margin-bottom: 15px;
-`
-
 const Wrap = styled.div`
     width: 100%;
 
@@ -24,7 +15,7 @@ const Wrap = styled.div`
 
 export const SwitchForm = props => {
     
-    const {changeFunc, type, variant} = props;
+    const {changeFunc, type, variant, flex} = props;
 
     const buttons = (
         <>
@@ -41,7 +32,7 @@ export const SwitchForm = props => {
         ? (<Wrap>
             {buttons}
         </Wrap>)
-        : (<RadioForm>
+        : (<Form flex={flex} >
             {buttons}
-        </RadioForm>);
+        </Form>);
 }

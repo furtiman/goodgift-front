@@ -1,12 +1,11 @@
 import React from 'react';
 import { Page } from 'components/Page';
+import { AdsContainer } from 'containers/AdsContainer';
 
 export const Ads = props => {
-    const {match} = props;
-
     return (
         <Page>
-            Ads {match.params.user}
+            <AdsContainer />
         </Page>
     );
 };
